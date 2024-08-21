@@ -1,0 +1,37 @@
+Diferenças de python, javascript e C#- o javascript e o python são linguagens mais abstratas, suportando maior flexibilidade de palavras e grande simplicidade, mas com menor precisão. A C# é uma linguagem mais concreta e rigorosa, não dispondo de flexibilidade e sendo mais complexa. Quanto à diferença entre o python e o javascript, o python é mais genérico e abrangente, enquanto o JS é próprio para a geração de interfaces, interatividade, animações... 
+
+Código de imagem em python
+
+from PIL import Image, ImageDraw
+
+def desenhar_mapa(caminho_imagem):
+    # Tamanho da imagem
+    largura, altura = 800, 600
+    imagem = Image.new('RGB', (largura, altura), 'lightblue')
+    draw = ImageDraw.Draw(imagem)
+
+    # Cores
+    cor_estrada = 'darkgrey'
+    cor_edificacao = 'brown'
+    cor_praça = 'green'
+
+    # Desenhar ruas (simplesmente retas para este exemplo)
+    draw.line([(100, 100), (700, 100)], fill=cor_estrada, width=10)  # Rua horizontal
+    draw.line([(400, 50), (400, 550)], fill=cor_estrada, width=10)  # Rua vertical
+
+    # Desenhar praças
+    draw.rectangle([300, 200, 500, 300], fill=cor_praça)  # Praça central
+
+    # Desenhar edificações (retângulos simples)
+    draw.rectangle([150, 150, 250, 250], fill=cor_edificacao)  # Edificação 1
+    draw.rectangle([550, 150, 650, 250], fill=cor_edificacao)  # Edificação 2
+    draw.rectangle([150, 400, 250, 500], fill=cor_edificacao)  # Edificação 3
+    draw.rectangle([550, 400, 650, 500], fill=cor_edificacao)  # Edificação 4
+
+    # Salvar imagem
+    imagem.save(caminho_imagem)
+
+# Caminho onde a imagem será salva
+caminho_imagem = 'mapa_cidade_medieval.png'
+desenhar_mapa(caminho_imagem)
+print(f"Imagem salva em {caminho_imagem}")
