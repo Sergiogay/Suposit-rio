@@ -1,0 +1,44 @@
+# Representação do tabuleiro de xadrez
+board = [
+    ["T", "C", "B", "D", "R", "B", "C", "T"],
+    ["P", "P", "P", "P", "P", "P", "P", "P"],
+    [".", ".", ".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", ".", ".", ".", "."],
+    ["p", "p", "p", "p", "p", "p", "p", "p"],
+    ["t", "c", "b", "d", "r", "b", "c", "t"]
+]
+
+# Função para imprimir o tabuleiro
+def print_board(board):
+    print("  a b c d e f g h")
+    for i, row in enumerate(board):
+        print(f"{8 - i} {' '.join(row)}")
+
+# Faz o primeiro lance: e2-e4 (movimento do peão branco)
+board[4][4] = "p"
+board[6][4] = "."
+
+# Faz a resposta do primeiro lance: e7-e5 (movimento do peão preto)
+board[3][4] = "P"
+board[1][4] = "."
+
+# Faz o segundo lance: Cf3 (movimento do cavalo branco)
+board[7][6] = "."
+board[5][5] = "c"
+
+# Faz a resposta do segundo lance: Cf6 (movimento do cavalo preto)
+board[0][6] = "."
+board[2][5] = "C"
+
+# Verifica se os primeiros lances são consistentes com a Defesa Petrov
+if board[4][4] == "p" and board[3][4] == "P" and board[5][5] == "c" and board[2][5] == "C":
+    print("Defesa Petrov!")
+else:
+    # Verifica se os lances são consistentes com a Abertura do Peão do Rei após e4
+    if board[4][4] == "p":
+        print("Abertura do Peão do Rei!")
+
+# Imprime o tabuleiro atual
+print_board(board)
